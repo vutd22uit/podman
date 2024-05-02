@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>Podman Knowledge Base</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới Thiệu về Podman</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
+    h1, h2 { color: #5a5a5a; }
+    p { margin: 20px 0; line-height: 1.6; }
+    code { background-color: #e2e2e2; padding: 2px 6px; border-radius: 4px; }
+    .container { width: 80%; margin: auto; background-color: #ffffff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+</style>
 </head>
 <body>
-    <h1>Welcome to Podman Knowledge Base</h1>
-    <p>Here you can find useful information about Podman.</p>
-    
-    <h2>What is Podman?</h2>
-    <p>Podman is an open-source, daemonless container engine for developing, managing, and running OCI containers on your Linux System.</p>
-
-    <h2>Key Features of Podman</h2>
+<div class="container">
+    <h1>Giới Thiệu về Podman</h1>
+    <p>Podman là một công cụ quản lý container mở rộng, hỗ trợ phát triển, quản lý và triển khai ứng dụng trong môi trường container hóa. Nó là một phần của dự án <a href="https://podman.io">podman.io</a> và được xây dựng để làm việc với Linux Containers.</p>
+    <h2>Cài đặt Podman</h2>
+    <p>Để cài đặt Podman trên hệ điều hành của bạn, bạn có thể sử dụng lệnh sau tùy theo bản phân phối Linux của bạn:</p>
+    <code>sudo apt-get install -y podman</code> (cho Ubuntu và Debian)<br>
+    <code>sudo yum install -y podman</code> (cho Fedora, CentOS)
+    <h2>Lệnh cơ bản</h2>
+    <p>Một số lệnh cơ bản để bắt đầu sử dụng Podman:</p>
     <ul>
-        <li>Daemonless: Podman doesn't require a daemon to run containers.</li>
-        <li>Rootless: Podman allows running containers as a non-root user.</li>
-        <li>Compatible: Podman is compatible with Docker images and registries.</li>
-        <li>Kubernetes Integration: Podman can generate Kubernetes YAML files.</li>
+        <li><code>podman run</code> - Chạy một container mới.</li>
+        <li><code>podman ps</code> - Hiển thị danh sách các container đang chạy.</li>
+        <li><code>podman images</code> - Hiển thị danh sách các image.</li>
     </ul>
-
-    <h2>Basic Podman Commands</h2>
-    <ul>
-        <li><code>podman run</code>: Run a command in a new container.</li>
-        <li><code>podman ps</code>: List containers.</li>
-        <li><code>podman build</code>: Build an image from a Dockerfile.</li>
-        <li><code>podman push</code>: Push an image to a registry.</li>
-    </ul>
+</div>
 </body>
 </html>
