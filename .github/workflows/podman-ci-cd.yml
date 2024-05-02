@@ -7,31 +7,39 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v2
     
+    - name: Set up Podman
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install podman
+    
     - name: Build the Docker image
       run: |
         podman build . --file Dockerfile --tag docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
-        
-    - name: Run container
-      run: |
-        podman run -d -p 8080:80 --name podman-demo-container docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
-        
-    - name: Test
-      run: |
-        curl http://localhost:8080
-        
-    - name: Push to Docker Hub
-      if: github.ref == 'refs/heads/main'
+        podman tag docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7} docker.io/vutd22uit/podman-demo:latest
+    
+    - name: Log in to Docker Hub
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        podman login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        echo $DOCKER_PASSWORD | podman login docker.io -u $DOCKER_USERNAME --password-stdin
+
+    - name: Push to Docker Hub
+      run: |
         podman push docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
         podman push docker.io/vutd22uit/podman-demo:latest
+        
+    - name: Run container
+      run: |
+        podman run -d -p 8080:80 --name podman-demo-container docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
+
+    - name: Test the deployment
+      run: |
+        sleep 10
+        curl http://localhost:8080
