@@ -1,32 +1,98 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giới Thiệu về Podman</title>
-<style>
-    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
-    h1, h2 { color: #5a5a5a; }
-    p { margin: 20px 0; line-height: 1.6; }
-    code { background-color: #e2e2e2; padding: 2px 6px; border-radius: 4px; }
-    .container { width: 80%; margin: auto; background-color: #ffffff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu về Podman</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .comparison div {
+            flex-basis: 45%;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .comparison div {
+                flex-basis: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Giới Thiệu về Podman</h1>
-    <p>Podman là một công cụ quản lý container mở rộng, hỗ trợ phát triển, quản lý và triển khai ứng dụng trong môi trường container hóa. Nó là một phần của dự án <a href="https://podman.io">podman.io</a> và được xây dựng để làm việc với Linux Containers.</p>
-    <h2>Cài đặt Podman</h2>
-    <p>Để cài đặt Podman trên hệ điều hành của bạn, bạn có thể sử dụng lệnh sau tùy theo bản phân phối Linux của bạn:</p>
-    <code>sudo apt-get install -y podman</code> (cho Ubuntu và Debian)<br>
-    <code>sudo yum install -y podman</code> (cho Fedora, CentOS)
-    <h2>Lệnh cơ bản</h2>
-    <p>Một số lệnh cơ bản để bắt đầu sử dụng Podman:</p>
-    <ul>
-        <li><code>podman run</code> - Chạy một container mới.</li>
-        <li><code>podman ps</code> - Hiển thị danh sách các container đang chạy.</li>
-        <li><code>podman images</code> - Hiển thị danh sách các image.</li>
-    </ul>
-</div>
+    <header>
+        <h1>Podman - Công cụ quản lý container hiện đại</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Giới thiệu về Podman</h2>
+            <p>Podman là một công cụ quản lý container mã nguồn mở, được phát triển bởi Red Hat. Nó cung cấp một cách làm việc đơn giản và hiệu quả để tạo, quản lý và chạy các container trên các hệ thống Linux.</p>
+        </section>
+        <section>
+            <h2>Ưu điểm của Podman</h2>
+            <ul>
+                <li>Không yêu cầu daemon</li>
+                <li>Tích hợp tốt với các công nghệ container khác như Kubernetes</li>
+                <li>Hỗ trợ tốt cho các hệ thống không có systemd</li>
+                <li>Cung cấp các tính năng bảo mật cao hơn so với Docker</li>
+                <li>Dễ dàng cài đặt và sử dụng</li>
+            </ul>
+        </section>
+        <section>
+            <h2>So sánh Podman và Docker</h2>
+            <div class="comparison">
+                <div>
+                    <h3>Podman</h3>
+                    <ul>
+                        <li>Không yêu cầu daemon</li>
+                        <li>Hỗ trợ tốt cho các hệ thống không có systemd</li>
+                        <li>Cung cấp các tính năng bảo mật cao hơn</li>
+                        <li>Tích hợp tốt với các công nghệ container khác</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Docker</h3>
+                    <ul>
+                        <li>Yêu cầu daemon luôn chạy</li>
+                        <li>Phụ thuộc vào systemd</li>
+                        <li>Tính năng bảo mật thấp hơn</li>
+                        <li>Hỗ trợ tích hợp với các công nghệ khác kém hơn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
