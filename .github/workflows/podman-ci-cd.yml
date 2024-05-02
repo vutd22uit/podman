@@ -16,11 +16,11 @@ jobs:
     
     - name: Build the Docker image
       run: |
-        podman build . --file Dockerfile --tag docker.io/vutd22uit/demopodman:podman-demo:${GITHUB_SHA::7}
+        podman build . --file Dockerfile --tag docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
         
     - name: Run container
       run: |
-        podman run -d -p 8080:80 --name podman-demo-container docker.io/vutd22uit/demopodman:podman-demo:${GITHUB_SHA::7}
+        podman run -d -p 8080:80 --name podman-demo-container docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
         
     - name: Test
       run: |
@@ -33,5 +33,5 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         podman login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-        podman push docker.io/vutd22uit/demopodman:podman-demo:${GITHUB_SHA::7}
-        podman push docker.io/vutd22uit/demopodman:podman-demo:latest
+        podman push docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
+        podman push docker.io/vutd22uit/podman-demo:latest
