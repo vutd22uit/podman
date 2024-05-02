@@ -1,0 +1,36 @@
+name: Podman CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Build the Docker image
+      run: |
+        podman build . --file Dockerfile --tag podman-demo:$(date +%s)
+        
+    - name: Run container
+      run: |
+        podman run -d -p 8080:80 --name podman-demo-container podman-demo:$(date +%s)
+        
+    - name: Test
+      run: |
+        curl http://localhost:8080
+        
+    - name: Push to Quay.io
+      if: github.ref == 'refs/heads/main'
+      env:
+        QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+        QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
+      run: |
+        podman login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD
+        podman push podman-demo:$(date +%s) quay.io/vutd22uit/podman-demo:latest
