@@ -1,98 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới thiệu về Podman</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        .comparison {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .comparison div {
-            flex-basis: 45%;
-            background-color: #f2f2f2;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        @media (max-width: 768px) {
-            .comparison div {
-                flex-basis: 100%;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podman - The daemonless container engine</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Podman - Công cụ quản lý container hiện đại</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Giới thiệu về Podman</h2>
-            <p>Podman là một công cụ quản lý container mã nguồn mở, được phát triển bởi Red Hat. Nó cung cấp một cách làm việc đơn giản và hiệu quả để tạo, quản lý và chạy các container trên các hệ thống Linux.</p>
-        </section>
-        <section>
-            <h2>Ưu điểm của Podman</h2>
-            <ul>
-                <li>Không yêu cầu daemon</li>
-                <li>Tích hợp tốt với các công nghệ container khác như Kubernetes</li>
-                <li>Hỗ trợ tốt cho các hệ thống không có systemd</li>
-                <li>Cung cấp các tính năng bảo mật cao hơn so với Docker</li>
-                <li>Dễ dàng cài đặt và sử dụng</li>
-            </ul>
-        </section>
-        <section>
-            <h2>So sánh Podman và Docker</h2>
-            <div class="comparison">
-                <div>
-                    <h3>Podman</h3>
-                    <ul>
-                        <li>Không yêu cầu daemon</li>
-                        <li>Hỗ trợ tốt cho các hệ thống không có systemd</li>
-                        <li>Cung cấp các tính năng bảo mật cao hơn</li>
-                        <li>Tích hợp tốt với các công nghệ container khác</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Docker</h3>
-                    <ul>
-                        <li>Yêu cầu daemon luôn chạy</li>
-                        <li>Phụ thuộc vào systemd</li>
-                        <li>Tính năng bảo mật thấp hơn</li>
-                        <li>Hỗ trợ tích hợp với các công nghệ khác kém hơn</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="#">
+          <img src="logo.png" alt="Podman Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Podman - The daemonless container engine</h1>
+      <p>Podman is a daemonless container engine for developing, managing, and running OCI Containers on your Linux System.</p>
+      <a href="#" class="cta">Get Started</a>
+    </section>
+
+    <section class="features">
+      <h2>Key Features</h2>
+      <ul>
+        <li>Daemonless architecture</li>
+        <li>Secure container management</li>
+        <li>Rootless containers</li>
+        <li>Easy deployment and integration</li>
+      </ul>
+    </section>
+
+    <section class="get-started">
+      <h2>Get Started with Podman</h2>
+      <p>Follow our step-by-step guide to install and start using Podman on your system.</p>
+      <a href="#" class="cta">Learn More</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Podman. All rights reserved.</p>
+  </footer>
 </body>
 </html>
