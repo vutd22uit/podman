@@ -10,27 +10,28 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
     
     - name: Build the Docker image
       run: |
-        podman build . --file Dockerfile --tag podman-demo:$(date +%s)
+        podman build . --file Dockerfile --tag docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
         
     - name: Run container
       run: |
-        podman run -d -p 8080:80 --name podman-demo-container podman-demo:$(date +%s)
+        podman run -d -p 8080:80 --name podman-demo-container docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
         
     - name: Test
       run: |
         curl http://localhost:8080
         
-    - name: Push to Quay.io
+    - name: Push to Docker Hub
       if: github.ref == 'refs/heads/main'
       env:
-        QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
-        QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        podman login quay.io -u $QUAY_USERNAME -p $QUAY_PASSWORD
-        podman push podman-demo:$(date +%s) quay.io/vutd22uit/podman-demo:latest
+        podman login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        podman push docker.io/vutd22uit/podman-demo:${GITHUB_SHA::7}
+        podman push docker.io/vutd22uit/podman-demo:latest
